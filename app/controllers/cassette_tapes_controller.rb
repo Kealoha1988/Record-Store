@@ -1,0 +1,2 @@
+class CassetteTapesController < ApplicationController
+end
