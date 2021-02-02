@@ -10,43 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_220858) do
+ActiveRecord::Schema.define(version: 2021_02_02_172958) do
 
-  create_table "cassette_tapes", force: :cascade do |t|
+  create_table "albums", force: :cascade do |t|
     t.string "title"
     t.string "artist"
-    t.string "record_label"
-    t.string "relase"
-    t.string "date"
+    t.string "label"
+    t.datetime "release_date"
     t.decimal "price"
+    t.integer "store_id"
+    t.integer "artist_id"
+    t.integer "genre_id"
+    t.integer "user_id"
+    t.string "format"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "cds", force: :cascade do |t|
-    t.string "title"
-    t.string "artist"
-    t.string "record_label"
-    t.string "relase"
-    t.string "date"
-    t.decimal "price"
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "records", force: :cascade do |t|
-    t.string "title"
-    t.string "artist"
-    t.string "record_label"
-    t.string "relase"
-    t.string "date"
-    t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

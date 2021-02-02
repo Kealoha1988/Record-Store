@@ -1,2 +1,0 @@
-class CdsController < ApplicationController
-end

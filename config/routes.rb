@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :albums
+  resources :artists
   resources :genres
   resources :cassette_tapes
   resources :cds

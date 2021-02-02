@@ -1,2 +1,0 @@
-class CassetteTapesController < ApplicationController
-end
