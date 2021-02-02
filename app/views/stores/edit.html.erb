@@ -1,0 +1,6 @@
+<h1> Edit Store </h1>
+
+<%= render partial: 'form', locals:{button_label: "Make Changes"} %>
+<br>
+
+<%= button_to "Delete", store_path(@store), method: :delete%>

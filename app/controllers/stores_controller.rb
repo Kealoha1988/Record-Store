@@ -8,6 +8,7 @@ def create
   @store = Store.new(store_params)
   if @store.save
     redirect_to store_path(@store)
+  end
 end
 
 def index
@@ -23,18 +24,20 @@ def edit
 end
 
 def update
-  @store.update(bag_params)
+  @store = Store.find_by(id: params[:id])
+  @store.update(store_params)
   if @store.save
     redirect_to store_path(@store)
   else
     render :edit
   end
+end
 
 
-def delete
+def destroy
   @store = Store.find_by(id: params[:id])
   @store.destroy
-  redirect_to store_path
+  redirect_to new_store_path
 end
 
 private
