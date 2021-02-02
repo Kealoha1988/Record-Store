@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_172958) do
+ActiveRecord::Schema.define(version: 2021_02_02_183232) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 2021_02_02_172958) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,47 @@
+class StoresController < ApplicationController
+
+def new
+  @store = Store.new
+end
+
+def create
+  @store = Store.new(store_params)
+  if @store.save
+    redirect_to store_path(@store)
+end
+
+def index
+  @stores = Store.all
+end
+
+def show
+  @store = Store.find_by(id: params[:id])
+end
+
+def edit
+  @store = Store.find_by(id: params[:id])
+end
+
+def update
+  @store.update(bag_params)
+  if @store.save
+    redirect_to store_path(@store)
+  else
+    render :edit
+  end
+
+
+def delete
+  @store = Store.find_by(id: params[:id])
+  @store.destroy
+  redirect_to store_path
+end
+
+private
+
+def store_params
+  params.require(:store).permit(:name, :address, :bio)
+end
+
+
+end
