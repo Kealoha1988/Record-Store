@@ -4,5 +4,5 @@ class Artist < ApplicationRecord
   has_many :albums
   has_many :genres, through: :albums
 
-  accepts_nested_attributes_for :albumn
+  accepts_nested_attributes_for :albums
 end
