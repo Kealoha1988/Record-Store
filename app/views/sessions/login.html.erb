@@ -1,5 +1,11 @@
+<center>
+<h3>Log In</h3>
+</center>
 
-<h1>Log In</h1>
+<script>$(document).ready(function(){
+    $('select').formSelect();
+  });</script>
+<div class="container">
 
 <%= form_tag login_path do %>
     <div class="input-field">
@@ -12,3 +18,5 @@
     </div>
     <%= submit_tag "Login" %>
 <% end %>
+
+</div>

@@ -1,10 +1,13 @@
+<div class= "container">
+
 <%= form_for [@store, @album] do |f| %>
 
-<h3>Choose Genre</h3>
+
+<h5>Choose Genre</h5>
  <%= f.collection_select :genre_id, Genre.order(:name),:id,:name, {:prompt => "Select Genre"} %>
 <br><br>
 
-<h3>Choose Artist</h3>
+<h5>Choose Artist</h5>
  <%= f.collection_select :artist_id, Artist.order(:name),:id,:name, {:prompt => "Select Artist"} %>
 <br><br>
 
@@ -12,7 +15,7 @@
 <br><br>
 
 
-<h3> Choose Format </h3>
+<h5> Choose Format </h5>
 <%= f.select :format, [['Vinyl', 'Vinyl'], ['CD', 'CD'], ['Cassette Tape', 'Cassette Tape']], {:prompt => "Select Format"} %>
 
 <br>
@@ -39,3 +42,5 @@
 <%= f.submit "#{button_label}" %>
 
 <% end %>
+
+</div>

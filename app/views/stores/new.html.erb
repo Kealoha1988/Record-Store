@@ -1,4 +1,13 @@
-<h1>New Store </h1>
+<center>
+<h3>New Store</h3>
+</center>
+
+<script>$(document).ready(function(){
+    $('select').formSelect();
+  });</script>
+
+
+<div class="container">
 
 <%= form_for @store do |f| %>
 <%= f.label "Name:" %> <br>
@@ -13,3 +22,5 @@
 <%= f.submit "Create Store Account" %>
 
 <% end %>
+
+</div>

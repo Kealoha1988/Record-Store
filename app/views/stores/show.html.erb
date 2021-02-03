@@ -2,10 +2,11 @@
 <br>
 <h3><%= @store.bio %></h3>
 <br>
+<h3><%= @store.address %></h3>
 <br>
-<h5><%= @store.address %></h5>
 
 <% @store.albums.each do |a|%>
- <h4><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %>  Format: <%= a.format%></h4> 
+ <h4><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %></h4><h5>Format: <%= a.format%></h5
+ > 
 <% end %>
 
