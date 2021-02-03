@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <h5><%= link_to "New Store", new_store_path %></h5> <h5><%= link_to "Log In", login_path %></h5> <h5><%= link_to "Log Out", logout_path %></h5>
 
   <body>
     <%= yield %>

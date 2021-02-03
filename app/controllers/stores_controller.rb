@@ -7,7 +7,10 @@ end
 def create
   @store = Store.new(store_params)
   if @store.save
+    session[:store_id] = @store.id
     redirect_to store_path(@store)
+  else
+    render :new
   end
 end
 
@@ -43,7 +46,7 @@ end
 private
 
 def store_params
-  params.require(:store).permit(:name, :address, :bio)
+  params.require(:store).permit(:name, :password_digest, :address, :bio)
 end
 
 

@@ -1,17 +1,17 @@
 class AlbumsController < ApplicationController
+ 
   
   def new
-    @store = Store.find_by(id: params[:store_id])
-
+    find_store
     @album = @store.albums.build
+   
 
   end
   
   def create
-    @artist = Artist.find_or_create_by(name: params[:artist])
-    byebug
-    @album.artist_id = @artist.id
-    @album = Store.albums.build(album_params)
+    find_store
+    @album = @store.albums.build(album_params)
+    @album.artist = @artist
 
 
     if @album.save
@@ -20,19 +20,20 @@ class AlbumsController < ApplicationController
   end
   
   def index
-    @albums = Album.all
+    find_store
+    @albums = @store.albums
   end
   
   def show
-    @album = Album.find_by(id: params[:id])
+    find_album
   end
   
   def edit
-    @album = Album.find_by(id: params[:id])
+    find_album
   end
   
   def update
-    @album = Album.find_by(id: params[:id])
+    find_album
     @album.update(album_params)
     if @album.save
       redirect_to store_albums_path(@album)
@@ -43,7 +44,7 @@ class AlbumsController < ApplicationController
   
   
   def destroy
-    @album = album.find_by(id: params[:id])
+    find_album
     @album.destroy
     redirect_to new_album_path
   end
@@ -51,6 +52,17 @@ class AlbumsController < ApplicationController
   private
   
   def album_params
-    params.require(:album).permit(:title, :artist, :format, :label, :release_date, :store_id, :genre_id, :artist_id, :price, :user_id)
+    params.require(:album).permit(:title, :format, :label, :release_date, :store_id, :genre_id, :artist_id, :price, :user_id, artist_attributes: [:name])
   end
+
+  def find_store
+    @store = Store.find_by(id: params[:store_id])
+  end
+
+  def find_album
+    @album = Album.find_by(id: params[:id])
+  end
+
+
+
 end
