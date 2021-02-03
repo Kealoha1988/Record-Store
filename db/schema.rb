@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_183232) do
+ActiveRecord::Schema.define(version: 2021_02_03_000133) do
 
-  create_table "albums", force: :cascade do |t|
+  create_table "albumns", force: :cascade do |t|
     t.string "title"
     t.string "artist"
     t.string "label"
