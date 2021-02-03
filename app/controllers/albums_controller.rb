@@ -12,10 +12,11 @@ class AlbumsController < ApplicationController
     find_store
     @album = @store.albums.build(album_params)
     @album.artist = @artist
-
-
+    
+    
     if @album.save
-      redirect_to store_albums_path(@album)
+  
+      redirect_to store_path(@store)
     end
   end
   

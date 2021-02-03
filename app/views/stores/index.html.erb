@@ -1,0 +1,10 @@
+<h1>Hello World</h1>
+
+<% @stores.each do |s| %>
+<ul>
+<li>
+<h3><%=link_to s.name, store_path(s) %> </h3>
+</li>
+</ul>
+
+<% end %>

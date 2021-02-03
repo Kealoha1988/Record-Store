@@ -1,18 +1,20 @@
 class SessionsController < ApplicationController
 
   def create
-    @store = Store.find_buy(name: params[:name])
+    @store = Store.find_by(name: params[:name])
     if !!@store && @store.authenticate(params[:password])
       session[:store_id] = @store.id
-      redirect_to store_path
+
+      redirect_to store_path(@store)
     else
-      message = "Please make sure the storename and password are correct!!"
-      redirect_to login_path, notice: message
+      flash.now[:error] = "We have exactly  books available."
+      render :login
     end
   end
 
   def destroy
-    session.delete :store_id
-  end
+    session.clear
+    redirect_to root_path
+end
 
 end

@@ -10,12 +10,13 @@ def create
     session[:store_id] = @store.id
     redirect_to store_path(@store)
   else
+    flash.now[:error] = @store.errors.full_messages
     render :new
   end
 end
 
 def index
-  @stores = Store.all
+  @stores = Store.all.order(name: :asc)
 end
 
 def show
@@ -46,7 +47,7 @@ end
 private
 
 def store_params
-  params.require(:store).permit(:name, :password_digest, :address, :bio)
+  params.require(:store).permit(:name, :password, :address, :bio)
 end
 
 

@@ -4,3 +4,8 @@
 <br>
 <br>
 <h5><%= @store.address %></h5>
+
+<% @store.albums.each do |a|%>
+ <h4><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %>  Format: <%= a.format%></h4> 
+<% end %>
+
