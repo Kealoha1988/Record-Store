@@ -35,10 +35,17 @@
     <div class="nav-wrapper">
       <div class="right hide-on-med-and-down"><h4 class="orange"><%= link_to "record bae", "#" %></h4></div>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><h4 class= "green"><%= link_to "New Store", new_store_path %></h4></li>
-        <li><h4 class= "red"><%= link_to "Log In", login_path %></h4></li>
-        <li><h4 class= "blue"><%= link_to "Log Out", logout_path %></h4></li>
-        <li><h4 class= "yellow"><%= link_to "Add Album", store_albums_path(current_store) %></h4></li>
+         <%if !store_logged_in?%>
+        <li><h4 class= "light-blue"><%= link_to "new user", "#" %></h4></li>
+        <li><h4 class= "red"><%= link_to "user log in", login_path %></h4></li>
+        <li><h4 class= "yellow"><%= link_to "new store", new_store_path %></h4></li>
+        <li><h4 class= "green"><%= link_to "store log in", login_path %></h4></li>
+        <%end%>
+        <%if store_logged_in?%>
+        <li><h4 class= "green"><%= link_to "log out", logout_path %></h4></li>
+        <li><h4 class= "red"><%= link_to "add album", new_store_album_path(current_store) %></h4></li>
+        <li><h4 class= "light-blue"><%= link_to "your store", store_albums_path(current_store) %></h4></li>
+        <%end%>
       </ul>
     </div>
     </div>

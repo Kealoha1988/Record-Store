@@ -21,10 +21,15 @@ class AlbumsController < ApplicationController
   end
   
   def index
-    @store = Store.find_by(id: params[:store_id])
     @artist = Artist.all
+    if params[:store_id]
+    @store = Store.find_by(id: params[:store_id])
     @albums = @store.albums
+    else
+      @albums = Album.all
+      @stores = Store.all
   end
+end
   
   def show
     find_album
@@ -40,7 +45,7 @@ class AlbumsController < ApplicationController
     logged_in_store
     @album.update(album_params)
     if @album.save
-      redirect_to '/stores'
+      redirect_to store_albums_path(logged_in_store)
     else
       render :edit
     end
