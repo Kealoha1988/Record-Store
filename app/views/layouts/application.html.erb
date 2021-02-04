@@ -33,18 +33,29 @@
     
     <div class="container">
     <div class="nav-wrapper">
-      <div class="right hide-on-med-and-down"><h4 class="orange"><%= link_to "record bae", "#" %></h4></div>
+      <div>
+     
+      <h5 class = "top right orange"><li><%= link_to "record bae", "#" %></li></h5>
+   
+      </div>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-         <%if !store_logged_in?%>
-        <li><h4 class= "light-blue"><%= link_to "new user", "/users/new" %></h4></li>
-        <li><h4 class= "red"><%= link_to "user log in", login_path %></h4></li>
-        <li><h4 class= "yellow"><%= link_to "new store", new_store_path %></h4></li>
-        <li><h4 class= "green"><%= link_to "store log in", login_path %></h4></li>
+         <%if !store_logged_in? && !user_logged_in?%>
+        <li><h5 class= "light-blue"><%= link_to "new user", "/users/new" %></h5></li>
+        <li><h5 class= "red"><%= link_to "user log in", login_path %></h5></li>
+        <li><h5 class= "yellow"><%= link_to "new store", new_store_path %></h5></li>
+        <li><h5 class= "green"><%= link_to "store log in", login_path %></h5></li>
         <%end%>
-        <%if store_logged_in?%>
-        <li><h4 class= "green"><%= link_to "log out", logout_path %></h4></li>
-        <li><h4 class= "red"><%= link_to "add album", new_store_album_path(current_store) %></h4></li>
-        <li><h4 class= "light-blue"><%= link_to "your store", store_albums_path(current_store) %></h4></li>
+        <%if user_logged_in?%>
+        <li><h5 class= "green"><%= link_to "log out", logout_path %></h5></li>
+        <li><h5 class= "amber"><%= link_to "edit profile", "#" %></h5></li>
+        <li><h5 class= "red"><%= link_to "all stores", "#" %></h5></li>
+        <li><h5 class= "light-blue"><%= link_to "all albums", "#" %></h5></li>
+        <%end%>
+        
+        <%if store_logged_in? && !user_logged_in?%>
+        <li><h5 class= "green"><%= link_to "log out", logout_path %></h5></li>
+        <li><h5 class= "red"><%= link_to "add album", new_store_album_path(current_store) %></h5></li>
+        <li><h5 class= "light-blue"><%= link_to "your store", store_albums_path(current_store) %></h5></li>
         <%end%>
       </ul>
     </div>

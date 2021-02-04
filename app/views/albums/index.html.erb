@@ -1,8 +1,36 @@
+<br>
 <%if for_store%>
 <center>
-<h3> Merch</h3>
+<div class= "container">
+<div class= "container">
+<div class= "container">
+<div class= "container">
+<h5 class= "teal white-text"><%= @store.name%></h5>
+</div>
+</div>
+</div>
+</div>
 </center>
+<br>
 <%end%>
+
+<% if for_store %>
+<div class= "container">
+<% @albums.each do |a|%>
+<ul>
+<li>
+<p><b> <%= @artist.find_by(id: a.artist_id).name%>:  <%=a.title %></b> <i>Format: <%= a.format%></i></p>
+<%= button_to "info", album_path(a), :method => "get", class: 'btn btn-small pink white-text'   %> <br>
+</li>
+</ul>
+<% end %>
+</div>
+<% end %>
+
+
+
+
+
 
 <% if !for_store%>
 <div class= "container">
@@ -11,18 +39,17 @@
 <div class= "container">
 <div class= "container">
 <div class= "container">
-<h4 class= "teal white-text"><%=s.name%></h4>
+<h5 class= "teal white-text"><%=s.name%></h5>
 </div>
 </div>
 </div>
+<br>
 </center>
 <% s.albums.each do |a|%>
-<ul>
-<li>
-<h5> <%= @artist.find_by(id: a.artist_id).name%>:  <%=a.title %> </h5>
-<h6>Format: <%= a.format%></h6>
-</li>
-</ul>
+
+
+<b><p> <%= @artist.find_by(id: a.artist_id).name%>:  <%=a.title %></b> <i>Format: <%= a.format%></i></p>
+
 <%end%>
 <%= button_to "visit store", store_path(s), :method => "get", class: 'btn btn-small pink white-text'   %> <br>
 <%end%>
@@ -32,17 +59,3 @@
 
 
 
-<% if for_store %>
-<div class= "container">
-<% @albums.each do |a|%>
-<ul>
-<li>
-<h5> <%= @artist.find_by(id: a.artist_id).name%>:  <%=a.title %> </h5>
-<h6>Format: <%= a.format%></h6>
-<%= button_to "info", album_path(a), :method => "get", class: 'btn btn-small pink white-text'   %>
-</li>
-</ul>
-<% end %>
-
-</div>
-<% end %>
