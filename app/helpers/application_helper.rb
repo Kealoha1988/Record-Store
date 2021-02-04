@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
 
 def store_logged_in?
   !!session[:store_id]

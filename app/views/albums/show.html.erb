@@ -1,9 +1,9 @@
 <center>
-<h3> What up tho show? </h3>
+<h3><%= Artist.find_by(id: @album.artist_id).name%>:  <%=@album.title %> </h3>
 </center>
 
 <div class= "container">
-<h5> <%= Artist.find_by(id: @album.artist_id).name%>:  <%=@album.title %> </h5>
+
 <h6>Format: <%= @album.format%></h6> 
 <h6>Genre: <%= Genre.find_by(id: @album.genre_id).name%></h6>
 <h6>Release Date: <%= @album.release_date%></h6> 

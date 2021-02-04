@@ -3,30 +3,40 @@ $(document).ready(function(){
     $('.materialboxed').materialbox();
   });
 </script> 
-
-<div class= "container">
+<br>
 <center>
 <div class= "container">
 <div class= "container">
 <div class= "container">
 <div class= "container">
-<h5 class= "blue white-text"><%= @store.name%></h5>
+<h5 class=><%=@store.name%></h5>
+<img class="materialboxed" width="400" src="<%= @store.image%>">
 </div>
 </div>
 </div>
-<br>
-
-<img class="materialboxed" width="400" src="https://thumbs.dreamstime.com/b/abstract-colorful-graffiti-wall-background-spray-painted-vandalized-ghetto-tagged-118073730.jpg">
-
 </div>
 </center>
 <br>
+
+
+
+
+<div class = "container">
 <p><%= @store.bio %></p>
-<br>
-
-
-
-<%= button_to "all albums", store_albums_path(@store), :method => "get", class: 'btn btn-small teal white-text'   %> 
 
 </div>
+<div class= "container">
+<%= button_to "all albums", store_albums_path(@store), :method => "get", class: 'btn btn-small teal white-text'   %> 
+</div>
+</div>
+</div>
+
+<br>
+
+<br>
+<br>
+
+</center>
+
+
 

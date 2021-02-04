@@ -47,7 +47,7 @@ end
 private
 
 def store_params
-  params.require(:store).permit(:name, :password, :address, :bio)
+  params.require(:store).permit(:name, :password, :address, :bio, :image)
 end
 
 def logged_in_store

@@ -1,4 +1,8 @@
-
+<script>
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script> 
 
 <center>
 <div class = "container"><div class = "container"><div class = "container"><div class = "container"><div class = "container">
@@ -7,6 +11,7 @@
 </div></div></div></div></div>
 <div class = "container">
 <h5><%= @user.username %></h5>
+<img class="materialboxed" width="400" src="<%= @user.image%>">
 
 <h5><%= @user.email%></h5>
 </div>

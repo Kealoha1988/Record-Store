@@ -13,10 +13,13 @@ Rails.application.routes.draw do
 
   # resources :sessions, only: [:create, :destroy]
 
-  get 'login', to: 'sessions#login'
+  get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
+
+  get '/user_login', to: 'sessions#login'
+  post '/user_login', to: 'sessions#create'
 
   
  
