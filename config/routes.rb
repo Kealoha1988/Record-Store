@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'main#index'
 
+  resources :albums
+
 
   resources :stores do 
     resources :albums

@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
   
   def create
-    find_store
+    logged_in_store
     @album = @store.albums.build(album_params)
     @album.artist = @artist
     
@@ -21,7 +21,8 @@ class AlbumsController < ApplicationController
   end
   
   def index
-    find_store
+    @store = Store.find_by(id: params[:store_id])
+    @artist = Artist.all
     @albums = @store.albums
   end
   
@@ -31,13 +32,15 @@ class AlbumsController < ApplicationController
   
   def edit
     find_album
+    logged_in_store
   end
   
   def update
     find_album
+    logged_in_store
     @album.update(album_params)
     if @album.save
-      redirect_to store_albums_path(@album)
+      redirect_to '/stores'
     else
       render :edit
     end

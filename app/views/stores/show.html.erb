@@ -9,14 +9,7 @@
 <br>
 <br>
 
-<% @store.albums.each do |a|%>
-<ul>
-<li>
- <h5><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %></h5><h6>Format: <%= a.format%></h6
- > 
-</li>
-</ul>
-<% end %>
+<h3><%= link_to "Albums", store_albums_path(@store) %></h3>
 
 </div>
 

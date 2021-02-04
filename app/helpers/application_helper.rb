@@ -9,7 +9,7 @@ def user_logged_in?
 end
 
 def current_store
-  @current_store ||= Store.fund_by(id: session[:store_id]) if !!session[:store_id]
+  @current_store ||= Store.find_by(id: session[:store_id]) if !!session[:store_id]
 end
 
 

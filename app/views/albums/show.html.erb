@@ -1,1 +1,14 @@
-<h1> What up tho show? </h1>
+<center>
+<h3> What up tho show? </h3>
+</center>
+
+<div class= "container">
+<h5> <%= Artist.find_by(id: @album.artist_id).name%>:  <%=@album.title %> </h5>
+<h6>Format: <%= @album.format%></h6> 
+<h6>Genre: <%= Genre.find_by(id: @album.genre_id).name%></h6>
+<h6>Release Date: <%= @album.release_date%></h6> 
+<h6>Record Label: <%= @album.label%></h6>
+<h6>Price: <%= @album.price%></h6> 
+
+
+<%= button_to "Edit Album", edit_album_path(@album), :method => "get", class: 'btn btn-small purple white-text'   %>

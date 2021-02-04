@@ -1,1 +1,20 @@
-<h1> What up tho index? </h1>
+<center>
+<h3> Our Albums </h3>
+</center>
+
+
+
+
+
+
+<div class= "container">
+<% @albums.each do |a|%>
+<ul>
+<li>
+<h5> <%= @artist.find_by(id: a.artist_id).name%>:  <%=a.title %> </h5><h6>Format: <%= a.format%></h6> 
+<%= button_to "Info", album_path(a), :method => "get", class: 'btn btn-small pink white-text'   %>
+</li>
+</ul>
+<% end %>
+
+</div>

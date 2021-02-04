@@ -38,6 +38,7 @@
         <li><h4 class= "green"><%= link_to "New Store", new_store_path %></h4></li>
         <li><h4 class= "red"><%= link_to "Log In", login_path %></h4></li>
         <li><h4 class= "blue"><%= link_to "Log Out", logout_path %></h4></li>
+        <li><h4 class= "yellow"><%= link_to "Add Album", store_albums_path(current_store) %></h4></li>
       </ul>
     </div>
     </div>
@@ -45,7 +46,7 @@
   </nav>
 
 
-  <body>
+  <body class= "white">
     <%= yield %>
   </body>
 </html>
