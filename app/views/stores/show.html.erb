@@ -1,12 +1,22 @@
-<h1><%= @store.name %></h1>
+
+<div class= "container">
+<center>
+<h3><%= @store.name %></h3>
+<h7><%= @store.address %></h7>
+</center>
 <br>
-<h3><%= @store.bio %></h3>
+<h5><%= @store.bio %></h5>
 <br>
-<h3><%= @store.address %></h3>
 <br>
 
 <% @store.albums.each do |a|%>
- <h4><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %></h4><h5>Format: <%= a.format%></h5
+<ul>
+<li>
+ <h5><%= Artist.find_by(id: a.artist_id).name%>:  <%=a.title %></h5><h6>Format: <%= a.format%></h6
  > 
+</li>
+</ul>
 <% end %>
+
+</div>
 
