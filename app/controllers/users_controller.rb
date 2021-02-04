@@ -43,6 +43,11 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to new_user_path
   end
+
+
+  def cart
+    current_user
+  end
   
   private
   

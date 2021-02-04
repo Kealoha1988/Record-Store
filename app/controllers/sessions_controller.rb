@@ -18,6 +18,19 @@ class SessionsController < ApplicationController
     end
   end
 
+  def user_create
+    @user = User.find_by(email: params[:email]) 
+    if !!@user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+
+      redirect_to user_path(@user)
+    else
+      flash.now[:error] = "We have exactly  books available."
+      render :user_login
+   
+  end
+end
+
   def destroy
     session.clear
     redirect_to root_path

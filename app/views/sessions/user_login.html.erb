@@ -2,12 +2,10 @@
 <h3>Log In</h3>
 </center>
 
+<div class = "container">
 
 <%= form_tag user_login_path do %>
-    <div class="input-field">
-        <%= label_tag "user name:" %> <br>
-        <%= text_field_tag :username%>
-    </div>
+    
     <div class="input-field">
         <%= label_tag "email:" %> <br>
         <%= email_field_tag :email%>

@@ -1,7 +1,8 @@
 class Album < ApplicationRecord
   belongs_to :store
-  has_one :artist
-  has_one :genre
+  belongs_to :user, optional: true 
+  belongs_to :artist
+  belongs_ to :genre
 
   validates :title, presence: true
   validates :format, presence: true

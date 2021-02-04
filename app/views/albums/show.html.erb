@@ -10,5 +10,10 @@
 <h6>Record Label: <%= @album.label%></h6>
 <h6>Price: <%= @album.price%></h6> 
 
-
+<% if current_store%>
 <%= button_to "edit album", edit_album_path(@album), :method => "get", class: 'btn btn-small purple white-text'   %>
+<%end%>
+
+<%if current_user%>
+<%= button_to "add to cart", store_album_add_path(@album.store, @album), :method => "patch", class: 'btn btn-small purple white-text'   %>
+<%end%>

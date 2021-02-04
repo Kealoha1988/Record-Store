@@ -6,10 +6,15 @@ Rails.application.routes.draw do
 
 
   resources :stores do 
-    resources :albums
+    resources :albums do
+    patch'/add', to: 'albums#add'
   end
+end
+  
   resources :artists
   resources :genres
+
+
 
   # resources :sessions, only: [:create, :destroy]
 
@@ -18,8 +23,13 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
-  get '/user_login', to: 'sessions#login'
-  post '/user_login', to: 'sessions#create'
+  get '/user_login', to: 'sessions#user_login'
+  post '/user_login', to: 'sessions#user_create'
+
+  get '/cart', to: 'main#cart'
+  post '/cart', to: 'main#add_to_cart'
+  patch '/main/:id', to: 'main#remove'
+  
 
   
  

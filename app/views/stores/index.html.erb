@@ -1,10 +1,21 @@
-<h1>Hello World</h1>
+<div class = "container">
+<center>
+<h5>bae stores</h5>
+
+</center>
+
 
 <% @stores.each do |s| %>
 <ul>
 <li>
-<h3><%=link_to s.name, store_path(s) %> </h3>
+
+<h6><%=link_to s.name, store_path(s) %> </h6>
+<%= s.address %>
+
 </li>
 </ul>
 
+
 <% end %>
+
+</div>

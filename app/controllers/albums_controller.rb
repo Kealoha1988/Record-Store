@@ -9,9 +9,8 @@ class AlbumsController < ApplicationController
   end
   
   def create
-    logged_in_store
+    @store = Store.find_by(id: session[:store_id])
     @album = @store.albums.build(album_params)
-    @album.artist = @artist
     
     
     if @album.save
@@ -33,22 +32,36 @@ end
   
   def show
     find_album
+    
   end
   
   def edit
     find_album
-    logged_in_store
+    if user_logged_in?
+      current_user
+    end
   end
   
   def update
     find_album
-    logged_in_store
-    @album.update(album_params)
-    if @album.save
-      redirect_to store_albums_path(logged_in_store)
+    if store_logged_in?
+      logged_in_store
+      @album.update(album_params)
+      if @album.save
+        redirect_to store_albums_path(logged_in_store)
+  
     else
       render :edit
     end
+  end
+  end
+
+  def add
+    @album = Album.find_by(id: params[:album_id])
+    user_logged_in?
+    @album.user = current_user
+    @album.save
+      redirect_to '/cart'
   end
   
   
@@ -57,20 +70,28 @@ end
     @album.destroy
     redirect_to new_album_path
   end
+
+  def remove
+    byebug
+    find_album
+    user_logged_in?
+    @album.user = nil
+    @album.save
+      redirect_to '/cart'
+  end
+
   
   private
   
   def album_params
-    params.require(:album).permit(:title, :format, :label, :release_date, :store_id, :genre_id, :artist_id, :price, :user_id, artist_attributes: [:name])
+    params.require(:album).permit(:title, :format, :label, :release_date, :store_id, :genre_id, :artist_id, :price, :user_id)
   end
 
   def find_store
     @store = Store.find_by(id: params[:store_id])
   end
 
-  def find_album
-    @album = Album.find_by(id: params[:id])
-  end
+
 
 
 
