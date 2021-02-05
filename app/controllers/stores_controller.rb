@@ -24,7 +24,6 @@ def show
 end
 
 def edit
-  redirect_if_not_logged_in_store
   current_store
   redirect_if_not_store
 end

@@ -31,27 +31,30 @@ class AlbumsController < ApplicationController
 end
   
   def show
-    find_album
+    @album = Album.find_by(id: params[:id])
     
   end
   
   def edit
+    redirect_if_not_logged_in_store
     current_store
-    
     find_album
+    if current_store.id == @album.store_id
+      edit_album_path(@album)
+    else
+      redirect_to '/bouncer'
   end
+end
   
   def update
     find_album
     current_store
-    
       @album.update(album_params)
       if @album.save
         redirect_to store_albums_path(current_store)
-  
     else
       render :edit
-  end
+    end
   end
 
   def add
@@ -65,7 +68,6 @@ end
   
   def destroy
     current_store
-    redirect_if_not_store
     find_album
     @album.destroy
     redirect_to '/'
