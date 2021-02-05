@@ -28,7 +28,9 @@ $(document).ready(function(){
 
 </div>
 <div class= "container">
+<%if user_logged_in?%>
 <%= button_to "all albums", store_albums_path(@store), :method => "get", class: 'btn btn-small teal white-text'   %> 
+<%end%>
 </div>
 </div>
 </div>

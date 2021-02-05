@@ -29,6 +29,9 @@ end
   patch '/main/:id', to: 'main#remove'
 
   get '/bouncer', to: "main#bouncer"
+
+
+  match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get, :post]
   
 
   
