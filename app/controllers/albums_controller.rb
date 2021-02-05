@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
   
   def create
-    @store = Store.find_by(id: session[:store_id])
+    current_store
     @album = @store.albums.build(album_params)
     
     
@@ -22,7 +22,7 @@ class AlbumsController < ApplicationController
   def index
     @artist = Artist.all
     if params[:store_id]
-    @store = Store.find_by(id: params[:store_id])
+    find_store
     @albums = @store.albums
     else
       @albums = Album.all
@@ -45,10 +45,10 @@ end
   def update
     find_album
     if store_logged_in?
-      logged_in_store
+      current_store
       @album.update(album_params)
       if @album.save
-        redirect_to store_albums_path(logged_in_store)
+        redirect_to store_albums_path(current_store)
   
     else
       render :edit
@@ -68,17 +68,9 @@ end
   def destroy
     find_album
     @album.destroy
-    redirect_to new_album_path
+    redirect_to '/'
   end
 
-  def remove
-    byebug
-    find_album
-    user_logged_in?
-    @album.user = nil
-    @album.save
-      redirect_to '/cart'
-  end
 
   
   private

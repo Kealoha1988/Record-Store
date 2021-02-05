@@ -3,9 +3,15 @@
 
 <h3><%= @current_user.username%></h3>
 <% @current_user.albums.each do |a|%>
-<p><b><%= a.title %></b> <%=a.artist.name%> <i>$<%= a.price %></i></p>
+<p><b><%= a.title %></b> <%=a.artist.name%><small> <%=link_to a.store.name, store_albums_path(a.store) %></small> <i>$<%= a.price %></i></p>
+<p>
 
-<%= button_to "buy", "#", :method => "delete", class: 'btn btn-small light-brown white-text'   %><%= button_to "remove", "/main/#{a.id}", :method => "patch", class: 'btn btn-small red white-text'   %>
+<%= button_to "purchase", "/albums/#{a.id}", :method => "delete", class: 'btn btn-small left orange white-text'   %>
+<ul>
+<%= button_to "remove", "/main/#{a.id}", :method => "patch", class: 'btn btn-small left grey white-text'   %>
+</ul>
+</p>
+<br>
 
 <br>
 <%end%>

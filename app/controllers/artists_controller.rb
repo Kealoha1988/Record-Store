@@ -16,15 +16,15 @@ class ArtistsController < ApplicationController
   end
   
   def show
-    @artist = Artist.find_by(id: params[:id])
+    find_artist
   end
   
   def edit
-    @artist = Artist.find_by(id: params[:id])
+    find_artist
   end
   
   def update
-    @artist = Artist.find_by(id: params[:id])
+    find_artist
     @artist.update(artist_params)
     if @artist.save
       redirect_to artist_path(@artist)
@@ -34,15 +34,13 @@ class ArtistsController < ApplicationController
   end
   
   
-  def destroy
-    @artist = Artist.find_by(id: params[:id])
-    @artist.destroy
-    redirect_to new_artist_path
-  end
-  
   private
   
   def artist_params
     params.require(:artist).permit(:name)
+  end
+
+  def find_artist
+    @artist = Artist.find_by(id: params[:id])
   end
 end

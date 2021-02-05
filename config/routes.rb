@@ -11,12 +11,10 @@ Rails.application.routes.draw do
   end
 end
   
-  resources :artists
-  resources :genres
+  resources :artists, except: [:destroy]
+  resources :genres,  only: [:index, :show]
 
 
-
-  # resources :sessions, only: [:create, :destroy]
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

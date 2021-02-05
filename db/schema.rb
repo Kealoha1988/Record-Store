@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_103601) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
-    t.string "image"
+    t.string "image", default: "https://i.pinimg.com/474x/45/11/c5/4511c5871ff8011385b023be70878d81.jpg"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_02_04_103601) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
+    t.string "image", default: "https://i.pinimg.com/474x/45/11/c5/4511c5871ff8011385b023be70878d81.jpg"
   end
 
 end

@@ -14,13 +14,12 @@ class ApplicationController < ActionController::Base
   end
 end
 
-  private
 
   def store_params
     params.require(:store).permit(:name, :password, :address, :bio)
   end
   
-  def logged_in_store
+  def current_store
     @store = Store.find_by(id: session[:store_id])
   end
 
@@ -39,5 +38,22 @@ end
   def find_album
     @album = Album.find_by(id: params[:id])
   end
+
+
+  def redirect_if_not_you
+    if @user.nil? || @user != User.find_by_id(params[:id])
+      redirect '/bouncer'
+    end
+  end
+
+
+  def redirect_if_not_store
+    if @store.nil? || @store.user.nil? || @store != current_store
+      redirect '/bouncer'
+    end
+  end
+
+ 
+
 
 end

@@ -8,14 +8,7 @@
   });</script>
 <%if store_logged_in?%>
 <%= render partial: 'form', locals:{button_label: "make changes"} %>
-<%end%>
-
-
-<% if user_logged_in? %>
 <div class= "container">
-<%= form_for [@store, @album] do |f| %>
-<%= f.hidden_field :user_id, value: @current_user.id %>
-<%= f.submit "add to cart" %>
+<%= button_to "delete album", store_album_path(@album), :method => "delete", class: 'btn btn-small orange white-text'   %>
 </div>
-<%end%>
 <%end%>
