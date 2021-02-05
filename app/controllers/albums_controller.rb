@@ -59,8 +59,9 @@ end
 
   def add
     @album = Album.find_by(id: params[:album_id])
-    user_logged_in?
-    @album.user = current_user
+    redirect_if_not_logged_in
+    
+    @album.user = the_current_user
     @album.save
       redirect_to '/cart'
   end

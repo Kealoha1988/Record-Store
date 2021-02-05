@@ -20,15 +20,21 @@ class UsersController < ApplicationController
   end
   
   def show
-    @current_user = User.find_by(id: params[:id])
+    redirect_if_not_logged_in
+    the_current_user
+    redirect_if_not_user
   end
   
   def edit
-   @current_user = User.find_by(id: params[:id])
+    redirect_if_not_logged_in
+    the_current_user
+    redirect_if_not_user
   end
   
   def update
-    @current_user = User.find_by(id: session[:user_id])
+    redirect_if_not_logged_in
+    the_current_user
+    redirect_if_not_user
  
     @current_user.update(user_params)
     if @current_user.save
@@ -40,7 +46,9 @@ class UsersController < ApplicationController
   
   
   def destroy
-    @current_user = User.find_by(id: params[:id])
+    redirect_if_not_logged_in
+    the_current_user
+    redirect_if_not_user
     session.clear
     @current_user.destroy
     redirect_to root_path

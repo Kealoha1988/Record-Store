@@ -5,8 +5,9 @@ class MainController < ApplicationController
 
  
   def remove
+    redirect_if_not_logged_in
+    the_current_user
     find_album
-    user_logged_in?
     @album.user = nil
     @album.save
       redirect_to '/cart'
