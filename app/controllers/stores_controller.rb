@@ -40,8 +40,10 @@ end
 
 def destroy
   logged_in_store
+  delete_all
+  session.clear
   @store.destroy
-  redirect_to new_store_path
+  redirect_to root_path
 end
 
 private
@@ -52,6 +54,12 @@ end
 
 def logged_in_store
   @store = Store.find_by(id: session[:store_id])
+end
+
+def delete_all
+  @store.albums.each do |d|
+    d.destroy
+  end
 end
 
 

@@ -25,7 +25,7 @@
 
 
 
-<%= f.submit "make changes" %>
+<%= f.submit "make changes", class: 'btn btn-small light-blue white-text'  %><%= button_to "Delete Profile", user_path(@user), :method => "delete", class: 'btn btn-small orange white-text' %> 
 
 <% end %>
 

@@ -57,6 +57,7 @@
         <li><h5 class= "green"><%= link_to "log out", logout_path %></h5></li>
         <li><h5 class= "red"><%= link_to "add album", new_store_album_path(current_store) %></h5></li>
         <li><h5 class= "light-blue"><%= link_to "your store", store_albums_path(current_store) %></h5></li>
+        <li><h5 class= "grey"><%= link_to "edit store", edit_store_path(current_store) %></h5></li>
         <%end%>
       </ul>
     </div>

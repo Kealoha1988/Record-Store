@@ -40,14 +40,13 @@ class UsersController < ApplicationController
   
   def destroy
     logged_in_user
+    session.clear
     @user.destroy
-    redirect_to new_user_path
+    redirect_to root_path
   end
 
 
-  def cart
-    current_user
-  end
+
   
   private
   
