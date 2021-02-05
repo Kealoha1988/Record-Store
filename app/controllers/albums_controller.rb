@@ -10,8 +10,8 @@ class AlbumsController < ApplicationController
   
   def create
     current_store
-    @album = @store.albums.build(album_params)
     
+    @album = @store.albums.build(album_params)
     
     if @album.save
   
@@ -36,23 +36,21 @@ end
   end
   
   def edit
+    current_store
+    
     find_album
-    if user_logged_in?
-      current_user
-    end
   end
   
   def update
     find_album
-    if store_logged_in?
-      current_store
+    current_store
+    
       @album.update(album_params)
       if @album.save
         redirect_to store_albums_path(current_store)
   
     else
       render :edit
-    end
   end
   end
 
@@ -66,6 +64,8 @@ end
   
   
   def destroy
+    current_store
+    redirect_if_not_store
     find_album
     @album.destroy
     redirect_to '/'

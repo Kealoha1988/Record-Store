@@ -12,5 +12,8 @@ class MainController < ApplicationController
       redirect_to '/cart'
   end
 
+  def bouncer
+  end
+
 
 end

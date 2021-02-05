@@ -15,17 +15,32 @@ class ApplicationController < ActionController::Base
 end
 
 
-  def store_params
-    params.require(:store).permit(:name, :password, :address, :bio)
+private
+
+  def store_logged_in?
+    !!current_store
   end
   
   def current_store
-    @store = Store.find_by(id: session[:store_id])
+    @store ||= Store.find_by_id(session[:store_id]) if session[:store_id]
+  end
+  
+  def redirect_if_not_logged_in_store
+    if !store_logged_in?
+      redirect_to '/bouncer'
+    end
+  end
+
+  def redirect_if_not_store
+    if @store.nil? || @store != Store.find_by_id(params[:id])
+      redirect_to '/bouncer'
+    end
   end
 
   def store_logged_in?
     !!Store.find_by(id: session[:store_id])
   end
+ 
 
   def current_user
    @current_user = User.find_by(id: session[:user_id])
@@ -41,17 +56,13 @@ end
 
 
   def redirect_if_not_you
-    if @user.nil? || @user != User.find_by_id(params[:id])
-      redirect '/bouncer'
+    if @current_user.nil? || @current_user != User.find_by_id(params[:id])
+      redirect_to '/bouncer'
     end
   end
 
 
-  def redirect_if_not_store
-    if @store.nil? || @store.user.nil? || @store != current_store
-      redirect '/bouncer'
-    end
-  end
+
 
  
 

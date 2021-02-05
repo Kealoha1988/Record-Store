@@ -27,6 +27,8 @@ end
   get '/cart', to: 'main#cart'
   post '/cart', to: 'main#add_to_cart'
   patch '/main/:id', to: 'main#remove'
+
+  get '/bouncer', to: "main#bouncer"
   
 
   

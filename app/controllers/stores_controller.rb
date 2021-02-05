@@ -24,11 +24,15 @@ def show
 end
 
 def edit
-  logged_in_store
+  redirect_if_not_logged_in_store
+  current_store
+  redirect_if_not_store
 end
 
 def update
-  logged_in_store
+  redirect_if_not_logged_in_store
+  current_store
+  redirect_if_not_store
   @store.update(store_params)
   if @store.save
     redirect_to store_path(@store)
@@ -39,7 +43,9 @@ end
 
 
 def destroy
-  logged_in_store
+  redirect_if_not_logged_in_store
+  current_store
+  redirect_if_not_store
   delete_all
   session.clear
   @store.destroy
@@ -55,6 +61,7 @@ end
 def logged_in_store
   @store = Store.find_by(id: session[:store_id])
 end
+
 
 def delete_all
   @store.albums.each do |d|
