@@ -4,21 +4,21 @@ $(document).ready(function(){
   });
 </script>
 
-<%if !!@user.first_name && !!@user.last_name%>
+<%if !!@current_user.first_name && !!@current_user.last_name%>
 <center>
 <div class = "container"><div class = "container"><div class = "container"><div class = "container"><div class = "container">
-<h5 class= "teal white-text"><%= @user.first_name.downcase %> <%=@user.last_name.downcase%></h5>
+<h5 class= "teal white-text"><%= @current_user.first_name.downcase %> <%=@current_user.last_name.downcase%></h5>
 </center>
 </div></div></div></div></div>
 <%end%>
 
 <div class = "container">
-<p class = "right"><b>user name:</b>  <%= @user.username %> <b>email: </b><%= @user.email%></p>
-<%if !!@user.image%>
-<img class="materialboxed" width="400" src="<%= @user.image%>">
+<p class = "right"><b>user name:</b>  <%= @current_user.username %> <b>email: </b><%= @current_user.email%></p>
+<%if !!@current_user.image%>
+<img class="materialboxed" width="400" src="<%= @current_user.image%>">
 <%end%>
 <br>
-<%= button_to "edit profile", edit_user_path(@user), :method => "get", class: 'btn btn-small purple white-text'   %>
+<%= button_to "edit profile", edit_user_path(@current_user), :method => "get", class: 'btn btn-small purple white-text'   %>
 
 </div>
 

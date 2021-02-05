@@ -5,25 +5,18 @@ class SessionsController < ApplicationController
     if !!@store && @store.authenticate(params[:password])
       session[:store_id] = @store.id
       redirect_to store_path(@store)
-    elsif
-      @user = User.find_by(username: params[:username])
-      if !!@user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-  
-        redirect_to user_path(@user)
     else
       flash.now[:error] = "We have exactly  books available."
       render :login
     end
-    end
   end
 
   def user_create
-    @user = User.find_by(email: params[:email]) 
-    if !!@user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+    @current_user = User.find_by(email: params[:email]) 
+    if !!@current_user && @current_user.authenticate(params[:password])
+      session[:user_id] = @current_user.id
 
-      redirect_to user_path(@user)
+      redirect_to user_path(@current_user)
     else
       flash.now[:error] = "We have exactly  books available."
       render :user_login

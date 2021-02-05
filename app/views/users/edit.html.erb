@@ -5,7 +5,7 @@
 
 <div class="container">
 
-<%= form_for @user do |f| %>
+<%= form_for @current_user do |f| %>
 
 <%= f.label "username:" %> <br>
 <%= f.text_field :username %>
@@ -25,8 +25,11 @@
 
 
 
-<%= f.submit "make changes", class: 'btn btn-small light-blue white-text'  %><%= button_to "Delete Profile", user_path(@user), :method => "delete", class: 'btn btn-small orange white-text' %> 
+<%= f.submit "make changes", class: 'btn btn-small light-blue white-text'%>
 
 <% end %>
+
+
+<%= button_to "Delete Profile", "/users/#{@current_user.id}", :method => "delete", class: 'btn btn-small orange white-text' %> 
 
 </div>
