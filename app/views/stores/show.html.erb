@@ -1,22 +1,17 @@
-<script>
-$(document).ready(function(){
-    $('.materialboxed').materialbox();
-  });
-</script> 
+
 
 <center>
-<div class= "container">
-<div class= "container">
-<div class= "container">
-<div class= "container">
+
 <h5 class=><%=@store.name%></h5>
-<img class="materialboxed" width="400" src="<%= @store.image%>">
-</div>
-</div>
-</div>
-</div>
+
 </center>
-<br>
+<div class = "col s7 push">
+<div class="parallax-container" height ="100" >
+      <div class="parallax"><img src="<%= @store.image%>" ></div>
+    </div>
+</div>
+
+
 
 
 
@@ -41,6 +36,8 @@ $(document).ready(function(){
 <br>
 
 </center>
-
-
-
+<script>
+ $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+</script>

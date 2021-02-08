@@ -12,17 +12,19 @@ $(document).ready(function(){
 <div class= "container">
 <div class= "container">
 <h5 class=><%=@store.name%></h5>
-<img class="materialboxed" width="400" src="<%= @store.image%>">
 </div>
 </div>
 </div>
 </div>
 </center>
+<div class= "container">
+<img class="materialboxed right" width="400" src="<%= @store.image%>"
+</div>
 <br>
 <%end%>
 
 <% if for_store %>
-<div class= "container">
+
 <% @albums.each do |a|%>
 <ul>
 <li>
@@ -31,7 +33,7 @@ $(document).ready(function(){
 </li>
 </ul>
 <% end %>
-</div>
+
 <% end %>
 
 
@@ -46,7 +48,7 @@ $(document).ready(function(){
 <div class= "container">
 <div class= "container">
 <div class= "container">
-<h5 class= "teal white-text"><%=s.name%></h5>
+<h5 class= "grey white-text"><%=s.name%></h5>
 </div>
 </div>
 </div>

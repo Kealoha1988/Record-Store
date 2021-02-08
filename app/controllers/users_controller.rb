@@ -22,19 +22,17 @@ class UsersController < ApplicationController
   def show
     redirect_if_not_logged_in
     the_current_user
-    redirect_if_not_user
   end
   
   def edit
     redirect_if_not_logged_in
     the_current_user
-    redirect_if_not_user
   end
   
   def update
     redirect_if_not_logged_in
     the_current_user
-    redirect_if_not_user
+
  
     @current_user.update(user_params)
     if @current_user.save
@@ -48,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     redirect_if_not_logged_in
     the_current_user
-    redirect_if_not_user
+
     session.clear
     @current_user.destroy
     redirect_to root_path

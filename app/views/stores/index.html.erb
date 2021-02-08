@@ -1,15 +1,20 @@
 <div class = "container">
 <center>
-<h5>bae stores</h5>
+<h5>all stores</h5>
+<img class="materialboxed top right" width=400 src="https://i.pinimg.com/564x/73/8b/60/738b600b6ca6ccabaa3dc05f96c52c83.jpg">
 
 </center>
 
 
+
 <% @stores.each do |s| %>
+
+
 <ul>
 <li>
 
 <h6><%=link_to s.name, store_path(s) %> </h6>
+<img class="materialboxed center" width="55" src="<%=s.image%>">
 <%= s.address %>
 
 </li>

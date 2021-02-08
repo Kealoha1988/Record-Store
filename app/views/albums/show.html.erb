@@ -6,9 +6,9 @@
 
 <h6>Format: <%= @album.format%></h6> 
 <h6>Genre: <%= Genre.find_by(id: @album.genre_id).name%></h6>
-<h6>Release Date: <%= @album.release_date%></h6> 
+<h6>Release Date: <%= @album.release_date.strftime("%m/%d/%Y")%></h6> 
 <h6>Record Label: <%= @album.label%></h6>
-<h6>Price: <%= @album.price%></h6> 
+<h6>Price: <i> $<%= @album.price%>0 </i> </h6> 
 
 <% if current_store%>
 <%= button_to "edit album", edit_album_path(@album), :method => "get", class: 'btn btn-small purple white-text'   %>

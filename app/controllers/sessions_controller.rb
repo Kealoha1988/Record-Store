@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:store_id] = @store.id
       redirect_to store_path(@store)
     else
-      flash.now[:error] = "We have exactly  books available."
+      flash.now[:error] =  ["must have password"]
       render :login
     end
   end
@@ -18,18 +18,23 @@ class SessionsController < ApplicationController
 
       redirect_to user_path(@current_user)
     else
-      flash.now[:error] = "We have exactly  books available."
-      render :user_login
+      flash.now[:error] = User.error.full_messages
    
   end
 end
 
 def google
-  @current_user = User.find_or_create_by(username:  auth["info"]["name"], email: auth["info"]["email"], image: auth["info"]["image"]) do |u|
+  @current_user = User.find_or_create_by(email: auth["info"]["email"])  do |u|
     u.password = SecureRandom.hex(10)
+    u.username = auth["info"]["name"].delete(' ') + rand(1000).to_s
+    u.image = auth["info"]["image"]
+    u.first_name = auth["info"]["first_name"]
+    u.last_name = auth["info"]["last_name"]
 
   end
   if !!@current_user && !!@current_user.id
+
+
     session[:user_id] = @current_user.id
     redirect_to user_path(@current_user)
   else

@@ -1,9 +1,16 @@
 
 <div class = "container">
 
-<h3><%= @current_user.username%></h3>
+
+
+<h3><%= @current_user.username%></h3> 
+<h5><small>    Total Price  <i>$<%= @price %>0</i> </small></h5>
+
+<%if !!@current_user.image%>
+<img class="materialboxed right" width="200" src="<%= @current_user.image%>">
+<%end%>
 <% @current_user.albums.each do |a|%>
-<p><b><%= a.title %></b> <%=a.artist.name%><small> <%=link_to a.store.name, store_albums_path(a.store) %></small> <i>$<%= a.price %></i></p>
+<p><b><%= a.title %></b> <%=a.artist.name%><small> <%=link_to a.store.name, store_albums_path(a.store) %></small> <i>$<%= a.price %>0</i></p>
 <p>
 
 <%= button_to "purchase", "/albums/#{a.id}", :method => "delete", class: 'btn btn-small left orange white-text'   %>
@@ -15,6 +22,7 @@
 
 <br>
 <%end%>
+
 
 
 </div>

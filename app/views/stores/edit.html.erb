@@ -9,5 +9,5 @@
 <%= render partial: 'form', locals:{button_label: "Make Changes"} %>
 <br>
 <center>
-<%= button_to "Delete Store", store_path(@store), method: :delete%>
+<%= button_to "Delete Store", store_path(@store), method: :delete, class: 'btn btn-small grey white-text'%>
 </center>

@@ -13,9 +13,9 @@ $(document).ready(function(){
 <%end%>
 
 <div class = "container">
-<p class = "right"><b>user name:</b>  <%= @current_user.username %> <b>email: </b><%= @current_user.email%></p>
+<p class = "right"><b>user name:</b>  <%= @current_user.username %> <br> <b>email: </b><%= @current_user.email%></p>
 <%if !!@current_user.image%>
-<img class="materialboxed" width="400" src="<%= @current_user.image%>">
+<img class="materialboxed" width="300" src="<%= @current_user.image%>">
 <%end%>
 <br>
 <%= button_to "edit profile", edit_user_path(@current_user), :method => "get", class: 'btn btn-small purple white-text'   %>

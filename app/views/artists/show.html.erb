@@ -1,1 +1,11 @@
-<h3><%= @artist.name %></h3>
+<div class = "container">
+
+<h5><%= @artist.name %></h5>
+
+<% @artist.albums.each do |a| %>
+<ul><li>
+<b><%= a.title%></b>
+</li></ul>
+<%end%>
+
+</div>

@@ -9,12 +9,10 @@ class AlbumsController < ApplicationController
   end
   
   def create
+    redirect_if_not_logged_in_store
     current_store
-    
     @album = @store.albums.build(album_params)
-    
     if @album.save
-  
       redirect_to store_path(@store)
     end
   end
@@ -23,7 +21,7 @@ class AlbumsController < ApplicationController
     @artist = Artist.all
     if params[:store_id]
     find_store
-    @albums = @store.albums
+    @albums = @store.albums.bougie
     else
       @albums = Album.all
       @stores = Store.all
@@ -35,17 +33,23 @@ end
     
   end
   
-  def edit
-    redirect_if_not_logged_in_store
-    current_store
-    find_album
-    if current_store.id == @album.store_id
-      edit_album_path(@album)
-    else
-      redirect_to '/bouncer'
-  end
-end
   
+def edit
+  if no_one_logged_in
+    redirect_to '/bouncer'
+   elsif current_user_logged_in
+    redirect_to '/bouncer'
+   elsif not_store_album
+    redirect_to '/bouncer'
+   else
+     current_store
+     find_album
+     current_store.id == @album.store_id
+     edit_album_path(@album)
+   end
+  end
+
+
   def update
     find_album
     current_store
@@ -85,9 +89,6 @@ end
   def find_store
     @store = Store.find_by(id: params[:store_id])
   end
-
-
-
 
 
 end
