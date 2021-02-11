@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:store_id] = @store.id
       redirect_to store_path(@store)
     else
-      flash.now[:error] =  ["must have password"]
+      flash.now[:error] =  ["must have name or password"]
       render :login
     end
   end
@@ -18,10 +18,10 @@ class SessionsController < ApplicationController
 
       redirect_to user_path(@current_user)
     else
-      flash.now[:error] = User.error.full_messages
-   
+      flash.now[:error] = ["must have email or password"]
+      render :user_login
+    end
   end
-end
 
 def google
   @current_user = User.find_or_create_by(email: auth["info"]["email"])  do |u|

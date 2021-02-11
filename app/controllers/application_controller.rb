@@ -2,9 +2,12 @@ class ApplicationController < ActionController::Base
 
 
   def cart
-    redirect_if_not_logged_in
+    if no_one_logged_in || !!current_store
+      redirect_to '/bouncer'
+    else
     the_current_user
     @price = @current_user.albums.map{|a| a.price}.sum
+    end
   end
 
   def add_to_cart
@@ -21,23 +24,30 @@ end
 
 private
 
-# app methods
+ # app methods
 
 def no_one_logged_in
   session[:user_id] == nil and  session[:store_id] == nil
 end
 
 
-#store methods
+ #store methods
 
   def current_store
     @store ||= Store.find_by_id(session[:store_id]) if session[:store_id]
   end
 
-  def store_logged_in?
-    !!current_store
+  def find_store
+    @store = Store.find_by(id: params[:store_id])
   end
-  
+
+  def store_logged_in?
+    !current_store == nil
+  end
+
+  def if_store_exists
+    Store.all.include?(Store.find_by(id: params[:id]))
+  end
   
   def redirect_if_not_logged_in_store
     if !store_logged_in?
@@ -46,12 +56,11 @@ end
   end
 
   def redirect_if_not_store
-    if @store.nil? || @store != Store.find_by_id(params[:id])
+    if @store == nil || @store.id != Store.find_by_id(params[:id])
       redirect_to '/bouncer'
     end
   end
 
- 
 # album methods
 
 def no_one_logged_in
@@ -71,18 +80,11 @@ end
     @album = Album.find_by(id: params[:id])
   end
 
-#   def protect_album
-#     if session[:user_id] == nil and  session[:store_id] == nil #check if someone is signed in
-#       redirect_to '/bouncer'
-#     elsif !!session[:user_id] == true #check if a user is logged in
-#       redirect_to '/bouncer'
-#     elsif session[:store_id] != Album.find_by(id: params[:id]).store.id #check if the album owns the store
-#       redirect_to '/bouncer'
-#   end
-# end
+# user methods
+def if_user_exists
+  User.all.include?(User.find_by(id: params[:id]))
+end
 
-
- # user methods
  
  def the_current_user
    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
@@ -111,5 +113,5 @@ end
     end
   end
 
-  
+
 end

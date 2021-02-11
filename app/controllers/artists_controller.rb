@@ -1,4 +1,6 @@
 class ArtistsController < ApplicationController
+  before_action :find_artist, only: [:show, :edit, :update]
+
 
   def new
     @artist = Artist.new
@@ -8,6 +10,9 @@ class ArtistsController < ApplicationController
     @artist = Artist.new(artist_params)
     if @artist.save
       redirect_to artist_path(@artist)
+    else
+      flash.now[:error] = @artist.errors.full_messages
+      render :new
     end
   end
   
@@ -16,19 +21,21 @@ class ArtistsController < ApplicationController
   end
   
   def show
-    find_artist
+    # find_artist
   end
   
   def edit
-    find_artist
+    # find_artist
+
   end
   
   def update
-    find_artist
+    # find_artist
     @artist.update(artist_params)
     if @artist.save
       redirect_to artist_path(@artist)
     else
+      flash.now[:error] = @artist.errors.full_messages
       render :edit
     end
   end
@@ -43,4 +50,5 @@ class ArtistsController < ApplicationController
   def find_artist
     @artist = Artist.find_by(id: params[:id])
   end
+
 end

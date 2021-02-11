@@ -2,13 +2,13 @@
 <h3>Edit Album</h3>
 </center>
 <br>
+<%if store_logged_in?%>
+  <%= render partial: 'form', locals:{button_label: "make changes"} %>
+  <div class= "container">
+    <%= button_to "delete album", store_album_path(@album), :method => "delete", class: 'btn btn-small orange white-text'   %>
+  </div>
+<%end%>
 
 <script>$(document).ready(function(){
     $('select').formSelect();
   });</script>
-<%if store_logged_in?%>
-<%= render partial: 'form', locals:{button_label: "make changes"} %>
-<div class= "container">
-<%= button_to "delete album", store_album_path(@album), :method => "delete", class: 'btn btn-small orange white-text'   %>
-</div>
-<%end%>
