@@ -1,0 +1,10 @@
+<h1>Store with most albums</h1>
+
+<% @stores.each do |s|%>
+<h3><%= s.name%></h3>
+<%s.albums.each do |a|%>
+<ul>
+<li><%=a.title%></li>
+</ul>
+<%end%>
+<%end%>

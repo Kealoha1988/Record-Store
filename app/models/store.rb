@@ -6,14 +6,4 @@ class Store < ApplicationRecord
   validates :name, presence: true
 
 
-  def aphabet
-    @stores.order_by(name: :asc)
-  end
-
-  def price_filter(x)
-
-    self.albums.order(x: :asc)
-  end
-
-
 end

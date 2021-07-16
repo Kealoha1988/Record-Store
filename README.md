@@ -1,24 +1,38 @@
-# README
+# About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Record Bae!
 
-Things you may want to cover:
+This app is a free platform for Record Stores to sell albums.
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+To start the app
+open the terminal and type
 
-* Database creation
 
-* Database initialization
+bundle install
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+then press enter
+after the installation is complete
+go back into the terminal and type
 
-* Deployment instructions
 
-* ...
+rails s
+
+and press enter
+open your web browser
+in the address bar type
+
+
+localhost:3000
+
+
+press enter and you are in!
+
+## Usage
+
+Stores can create, edit, and delete a profile. Also add and delete albums from their inventory.
+Customers can create, edit, and delete a prolife; brows the stores merchandise, and purchase albums.
+Thanks for using Record Bae!

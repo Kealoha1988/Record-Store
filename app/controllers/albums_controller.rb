@@ -61,7 +61,7 @@ def edit
   end
 
 
-  def add
+  def add  
     if the_current_user == nil
       redirect_to root_path
     else

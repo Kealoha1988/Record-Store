@@ -4,17 +4,15 @@ class MainController < ApplicationController
   end
 
  
-  def remove
-    redirect_if_not_logged_in
-    the_current_user
-    find_album
-    @album.user = nil
-    @album.save
-      redirect_to '/cart'
-  end
 
   def bouncer
   end
 
+  def store_most
+    @stores = Store.joins(:albums).group("albums.store_id").order("count(albums.store_id) desc").limit(1)
+    render 'most'
+  end
+
 
 end
+
