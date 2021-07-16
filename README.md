@@ -1,38 +1,33 @@
-# About
-
+# Record Bae
 Welcome to Record Bae!
 
-This app is a free platform for Record Stores to sell albums.
+This a free platform for Record Stores to sell albums during the pandemic made using Ruby on Rails.
 
+## Installation 
 
-## Installation
+In terminal
 
-To start the app
-open the terminal and type
-
-
+```bash
 bundle install
-
-
-then press enter
-after the installation is complete
-go back into the terminal and type
-
-
+```
+followed by;
+```bash
 rails s
+```
 
-and press enter
-open your web browser
-in the address bar type
+## run
+```
+In a browser of your choice
+```
+Enter https://localhost:3000
+```
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+Choose a LicenseChoose a License
+MIT License
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-localhost:3000
-
-
-press enter and you are in!
-
-## Usage
-
-Stores can create, edit, and delete a profile. Also add and delete albums from their inventory.
-Customers can create, edit, and delete a prolife; brows the stores merchandise, and purchase albums.
 Thanks for using Record Bae!
